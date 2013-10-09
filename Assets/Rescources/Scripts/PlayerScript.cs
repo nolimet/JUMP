@@ -47,5 +47,17 @@ public class PlayerScript : MonoBehaviour
 		{
 			OnGround = true;
 		}
+		
+		if(col.collider.name == "EnemyJumper")
+		{
+			Destroy(col.collider.gameObject);
+			Application.LoadLevel(0);
+		}
+		
+		if (col.collider.name == "EnemyWalker")
+		{
+			Destroy(col.collider.gameObject);
+			Application.LoadLevel(0);
+		}
 	}
 }
