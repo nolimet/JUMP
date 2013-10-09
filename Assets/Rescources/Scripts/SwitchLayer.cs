@@ -40,18 +40,18 @@ public class SwitchLayer : MonoBehaviour {
 		{
 			pos.z += step;
 		}
-		else
+		/*else if (transform.position.z>MoveTo || transform.position.z<StartPos)
 		{
 			home=true;
-			/*if(switched)
+			if(switched == true)
 			{
 				pos.z=MoveTo;
 			}
-			else
+			else if(switched == false)
 			{
 				pos.z=StartPos;	
-			}*/
-		}
+			}
+		}*/
 		transform.position=pos;
 	}
 }
