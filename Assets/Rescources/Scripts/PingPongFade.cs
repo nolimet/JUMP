@@ -7,7 +7,7 @@ public class PingPongFade : MonoBehaviour {
 	
 	public float maxAlpha = 0.2f;
 	
-	private bool updown = false;
+	private bool updown = true;
 	
 	public KeyCode KeyBind;
 
