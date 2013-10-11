@@ -5,6 +5,10 @@ public class PlayerScript : MonoBehaviour
 {
 	public static bool OnGround;
 	
+	public KeyCode MoveLeft;
+	public KeyCode MoveRight;
+	public KeyCode Jump;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,16 +28,16 @@ public class PlayerScript : MonoBehaviour
 		Vector3 vel = rigidbody.velocity;
 			vel.x=0f;
 			rigidbody.velocity = vel;
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKey(MoveRight))
 		{
 			rigidbody.AddRelativeForce(new Vector3(0, 0, 1000));
 		}
-		else if (Input.GetKey(KeyCode.A))
+		else if (Input.GetKey(MoveLeft))
 		{
 			rigidbody.AddRelativeForce(new Vector3(0, 0, -1000));	
 		}
 		
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(Jump))
 		{
 			rigidbody.AddForce (Vector3.up * 1500);
 		}
