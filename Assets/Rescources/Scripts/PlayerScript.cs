@@ -5,6 +5,9 @@ public class PlayerScript : MonoBehaviour
 {
 	public static bool OnGround;
 	
+	public int CurrentLevel;
+	
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,17 +29,19 @@ public class PlayerScript : MonoBehaviour
 			rigidbody.velocity = vel;
 		if (Input.GetKey(KeyCode.D))
 		{
-			rigidbody.AddRelativeForce(new Vector3(0, 0, 1000));
+			rigidbody.AddRelativeForce(new Vector3(10000,0,0 ));
 		}
 		else if (Input.GetKey(KeyCode.A))
 		{
-			rigidbody.AddRelativeForce(new Vector3(0, 0, -1000));	
+			rigidbody.AddRelativeForce(new Vector3(-10000,0 ,0 ));	
 		}
 		
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			rigidbody.AddForce (Vector3.up * 1500);
+			rigidbody.AddForce (Vector3.up * 15000);
 		}
+		
+	
 		
 		
 	}
@@ -46,6 +51,7 @@ public class PlayerScript : MonoBehaviour
 		if(col.collider.name == "Ground")
 		{
 			OnGround = true;
+			
 		}
 		
 		if(col.collider.name == "EnemyJumper")
@@ -59,5 +65,6 @@ public class PlayerScript : MonoBehaviour
 			Destroy(col.collider.gameObject);
 			Application.LoadLevel(0);
 		}
+		
 	}
 }
