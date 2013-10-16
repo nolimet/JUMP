@@ -3,26 +3,23 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour 
 {
-	public static bool OnGround;
+	//public bool OnGround;
 	
 	public int CurrentLevel;
 	
 	public KeyCode MoveLeft;
 	public KeyCode MoveRight;
-	public KeyCode Jump;
+	//public KeyCode Jump;
+	
+	//public float jumpForce;
+	//public float jumpduration;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		OnGround = false;
-	
+		//OnGround = false;
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
 	void FixedUpdate()
 	{
 		
@@ -39,6 +36,7 @@ public class PlayerScript : MonoBehaviour
 			rigidbody.AddRelativeForce(new Vector3(-10000,0 ,0 ));	
 		}
 		
+<<<<<<< HEAD
 
 
 		if (Input.GetKey(Jump))
@@ -46,6 +44,13 @@ public class PlayerScript : MonoBehaviour
 		{
 			rigidbody.AddForce (Vector3.up * 1500);
 		}
+=======
+		//if (Input.GetKeyDown(Jump) && OnGround==true)
+		//{
+		//	rigidbody.AddForce (Vector3.up * jumpForce);
+		//	OnGround=false;
+		//}
+>>>>>>> origin/got-a-error
 		
 	
 		
@@ -54,11 +59,18 @@ public class PlayerScript : MonoBehaviour
 	
 	void OnCollisionEnter (Collision col)
 	{
+<<<<<<< HEAD
 		if(col.collider.name == "Ground")
 		{
 			OnGround = true;
 			
 		}
+=======
+		//if(col.collider.tag == "Ground")
+		//{
+		//	OnGround = true;
+		//}
+>>>>>>> origin/got-a-error
 		
 		if(col.collider.name == "EnemyJumper")
 		{
@@ -68,8 +80,8 @@ public class PlayerScript : MonoBehaviour
 		
 		if (col.collider.name == "EnemyWalker")
 		{
-			Destroy(col.collider.gameObject);
-			Application.LoadLevel(0);
+			//Destroy(col.collider.gameObject);
+			//Application.LoadLevel(Application.loadedLevel);
 		}
 		
 	}
