@@ -9,7 +9,7 @@ public class PingPongFade : MonoBehaviour {
 	
 	private bool updown = true;
 	
-	public KeyCode KeyBind;
+	public KeyCode KeyBind = KeyCode.E;
 
     // Update is called once per frame
 
