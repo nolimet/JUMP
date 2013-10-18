@@ -8,7 +8,8 @@ public class SwitchLayer : MonoBehaviour {
 	public float duration = 0.1f;
 	
 	private bool switched = false;
-	private bool home=true;
+	private bool CanSwitch;
+	private bool home = true;
 	
 	private float MoveTo;
 	private float StartPos;
@@ -32,26 +33,27 @@ public class SwitchLayer : MonoBehaviour {
 		}
 
 		
-		if(switched && transform.position.z>StartPos && home==false)
+		if(switched && transform.position.z>StartPos && CanSwitch)
 		{
 			pos.z -= step;
 		}
-		else if(switched ==false && transform.position.z<MoveTo && home==false)
+		else if(switched ==false && transform.position.z<MoveTo && CanSwitch)
 		{
 			pos.z += step;
 		}
-		/*else if (transform.position.z>MoveTo || transform.position.z<StartPos)
-		{
-			home=true;
-			if(switched == true)
-			{
-				pos.z=MoveTo;
-			}
-			else if(switched == false)
-			{
-				pos.z=StartPos;	
-			}
-		}*/
 		transform.position=pos;
+	}
+	
+	void OncollisionEnter(Collider col)
+	{
+		if(col.collider.tag=="AntiSwitch")
+		{
+			CanSwitch=false;	
+		}
+		else
+		{
+			CanSwitch=true;	
+		}
+			
 	}
 }
