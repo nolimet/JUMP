@@ -23,34 +23,31 @@ public class SpriteHandler : MonoBehaviour {
 		float sizeX; 
 		float sizeY;
 	
-		Vector2 size;
+		Vector2 size = Vector2.zero;
+		Vector2 OffSet = Vector2.zero;
 		
-		if(hasTexture==false)
-		{
 			sizeX = 1f /nrOfColums;
 			sizeY =1f / nrOfRows;
 		
 			size = new Vector2 (sizeX,sizeY);
+			
 			
 			float vindex = index/nrOfColums;
 			float uindex = index%nrOfColums;
 			
 			float OffSetX = size.x*(uindex+startAtColum);
 			float OffSetY =size.y*(vindex+startAtRow);
-			Vector2 OffSet = new Vector2 (OffSetX,OffSetY);
+			OffSet = new Vector2 (OffSetX,OffSetY);
 		
 			Debug.Log ("vindx " + vindex + " uindx " + uindex);
-		}
-		else
-		{
-			
-		}
 		
 		
 		//set size
-		
-		renderer.material.SetTextureScale("_MainTex",size);
-		renderer.material.SetTextureOffset("_MainTex",OffSet);
+		if(size!=Vector2.zero&&OffSet!=Vector2.zero)
+		{
+			renderer.material.SetTextureScale("_MainTex",size);
+			renderer.material.SetTextureOffset("_MainTex",OffSet);
+		}
 		
 	}
 }

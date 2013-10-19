@@ -10,19 +10,39 @@ public class PlayerScript : MonoBehaviour
 	public KeyCode MoveLeft;
 	public KeyCode MoveRight;
 	
+	private SpriteHandler animate;
+	private JumpPlayer Jump;
+	
+	
+	void Start()
+	{
+		animate = GetComponent<SpriteHandler>();
+		Jump = GetComponent<JumpPlayer>();
+	}
+	void Update()
+	{
+		animate.Animate(9,4,0,0,29,30);		
+	}
 	void FixedUpdate()
 	{
-		
+		float move;
 		Vector3 vel = rigidbody.velocity;
 			vel.x=0f;
 			rigidbody.velocity = vel;
+		if(Jump.OnGround)
+		{
+			 move = 10000;
+		}
+		else{
+			move = 5000;	
+		}
 		if (Input.GetKey(MoveRight))
 		{
-			rigidbody.AddRelativeForce(new Vector3(10000,0,0 ));
+			rigidbody.AddRelativeForce(new Vector3(move,0,0 ));
 		}
 		else if (Input.GetKey(MoveLeft))
 		{
-			rigidbody.AddRelativeForce(new Vector3(-10000,0 ,0 ));	
+			rigidbody.AddRelativeForce(new Vector3(-move,0 ,0 ));	
 		}
 	}
 	
