@@ -21,7 +21,10 @@ public class PlayerScript : MonoBehaviour
 	}
 	void Update()
 	{
-		animate.Animate(9,4,0,0,29,30);		
+		if(Input.GetKey(MoveLeft)||Input.GetKey(MoveRight))
+		{
+		animate.Animate(9,4,0,0,29,5);	
+		}
 	}
 	void FixedUpdate()
 	{

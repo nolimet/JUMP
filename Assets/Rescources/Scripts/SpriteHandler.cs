@@ -3,7 +3,8 @@ using System.Collections;
 
 public class SpriteHandler : MonoBehaviour {
 
-	private int delay;
+	private float delay;
+
 	
 	//public int nrOfColums;
 	//public int nrOfRows;
@@ -14,40 +15,56 @@ public class SpriteHandler : MonoBehaviour {
 	//public int startAtCollum;
 	//public int startAtRow;
 	// Update is called once per frame
+	private int Frame = 0;
 	
 	public void Animate (int nrOfColums, int nrOfRows, int startAtColum, int startAtRow,int NrOfCells,int Fps, bool hasTexture=false, Vector2 TextureSize = new Vector2()) {
 
-		int index = (int) (Fps*Time.time);
-		index = index % NrOfCells;
-	
-		float sizeX; 
-		float sizeY;
-	
-		Vector2 size = Vector2.zero;
-		Vector2 OffSet = Vector2.zero;
-		
-			sizeX = 1f /nrOfColums;
-			sizeY =1f / nrOfRows;
-		
-			size = new Vector2 (sizeX,sizeY);
-			
-			
-			float vindex = index/nrOfColums;
-			float uindex = index%nrOfColums;
-			
-			float OffSetX = size.x*(uindex+startAtColum);
-			float OffSetY =size.y*(vindex+startAtRow);
-			OffSet = new Vector2 (OffSetX,OffSetY);
-		
-			Debug.Log ("vindx " + vindex + " uindx " + uindex);
-		
-		
-		//set size
-		if(size!=Vector2.zero&&OffSet!=Vector2.zero)
+		//int index = (int) (Fps*Time.time);
+		//index = index % NrOfCells;
+		if(delay<=0)
 		{
-			renderer.material.SetTextureScale("_MainTex",size);
-			renderer.material.SetTextureOffset("_MainTex",OffSet);
-		}
+			int index;
+			index = Frame;
+			
 		
+			float sizeX; 
+			float sizeY;
+		
+			Vector2 size = Vector2.zero;
+			Vector2 OffSet = Vector2.zero;
+			
+				sizeX = 1f /nrOfColums;
+				sizeY =1f / nrOfRows;
+			
+				size = new Vector2 (sizeX,sizeY);
+				
+				
+				float vindex = index/nrOfColums;
+				float uindex = index%nrOfColums;
+				
+				float OffSetX = size.x*(uindex+startAtColum);
+				float OffSetY =size.y*(vindex+startAtRow);
+				OffSet = new Vector2 (OffSetX,OffSetY);
+			
+				Debug.Log ("vindx " + vindex + " uindx " + uindex);
+			
+			
+			//set size
+			if(size!=Vector2.zero&&OffSet!=Vector2.zero)
+			{
+				renderer.material.SetTextureScale("_MainTex",size);
+				renderer.material.SetTextureOffset("_MainTex",OffSet);
+			}
+			if(Frame==NrOfCells)
+			{
+				Frame=0;	
+			}
+			else
+			{
+			 Frame ++;	
+			}
+			delay=1/Fps;
+		}
+		delay -= Time.deltaTime;
 	}
 }
