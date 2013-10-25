@@ -7,9 +7,8 @@ public class SwitchLayer : MonoBehaviour {
 	public float distance = 1;
 	public float duration = 0.1f;
 	
-	private bool switched = false;
-	private bool CanSwitch;
-	private bool home = true;
+	public bool switched = false;
+	public bool CanSwitch = true;
 	
 	private float MoveTo;
 	private float StartPos;
@@ -18,6 +17,7 @@ public class SwitchLayer : MonoBehaviour {
 	void Start () {
 		MoveTo = transform.position.z+distance;
 		StartPos = transform.position.z;
+		switched=true;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,6 @@ public class SwitchLayer : MonoBehaviour {
 		if(Input.GetKeyDown(switchKey))
 		{
 			switched=!switched;
-			home=false;
 		}
 
 		
