@@ -7,6 +7,18 @@ public class EnemyWalker : MonoBehaviour
 
 	int richting = 1;
 	
+	private SpriteHandler animate;
+	
+	void Start()
+	{
+		animate = GetComponent<SpriteHandler>();
+	}
+	
+	void Update()
+	{
+		animate.Animate(4,5,0,0,19,5);	
+	}
+	
 	void FixedUpdate () 
 	{
 		/*Vector3 speed = new Vector3();
