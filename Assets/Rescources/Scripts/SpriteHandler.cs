@@ -46,7 +46,7 @@ public class SpriteHandler : MonoBehaviour {
 				float OffSetY =size.y*(vindex+startAtRow);
 				OffSet = new Vector2 (OffSetX,OffSetY);
 			
-				//Debug.Log ("vindx " + vindex + " uindx " + uindex);
+				Debug.Log ("vindx " + vindex + " uindx " + uindex);
 			
 			
 			//set size

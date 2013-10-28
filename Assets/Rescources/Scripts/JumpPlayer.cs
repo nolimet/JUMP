@@ -9,6 +9,12 @@ public class JumpPlayer : MonoBehaviour {
 	
 	public float jumpForce = 1500;
 	public float jumpDuration;
+	
+	// Use this for initialization
+	void Start () {
+
+	}
+	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{

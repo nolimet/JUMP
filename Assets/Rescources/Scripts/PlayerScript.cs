@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
 	
 	public KeyCode MoveLeft;
 	public KeyCode MoveRight;
-	private bool dead = false;
 	
 	private SpriteHandler animate;
 	private JumpPlayer Jump;
@@ -22,14 +21,6 @@ public class PlayerScript : MonoBehaviour
 	}
 	void Update()
 	{
-		if(transform.position.y<=-3)
-		{
-			dead=true;	
-		}
-		if(dead)
-		{
-			Application.LoadLevel(0);	
-		}
 		if(Input.GetKey(MoveLeft)||Input.GetKey(MoveRight))
 		{
 		animate.Animate(9,4,0,0,29,5);	
@@ -63,12 +54,13 @@ public class PlayerScript : MonoBehaviour
 		if(col.collider.name == "EnemyJumper")
 		{
 			Destroy(col.collider.gameObject);
-			dead=true;
+			Application.LoadLevel(0);
 		}
 		
 		if (col.collider.name == "EnemyWalker")
 		{
-			dead= true;
+			//Destroy(col.collider.gameObject);
+			//Application.LoadLevel(Application.loadedLevel);
 		}
 		
 	}
